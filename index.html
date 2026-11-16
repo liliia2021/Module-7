@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>See the World (Побачити світ)</title>
+<style>
+:root{--bg:#fff;--fg:#1d2433;--mut:#5b6475;--card:#f4f6fb;--line:#c5cbe0;--acc:#2f6fed;--ok:#1f9d55;--okbg:#dff5e8;--bad:#d64545;--badbg:#fde4e4;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151a26;--fg:#e8ecf6;--mut:#9aa4bd;--card:#1e2536;--line:#3a4560;--acc:#6c9bff;--ok:#55d68a;--okbg:#173b27;--bad:#ff8080;--badbg:#432127;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#151a26;--fg:#e8ecf6;--mut:#9aa4bd;--card:#1e2536;--line:#3a4560;--acc:#6c9bff;--ok:#55d68a;--okbg:#173b27;--bad:#ff8080;--badbg:#432127;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:820px;margin:0 auto;padding:16px}
+h1{margin:.2em 0 0;font-size:1.9rem}.sub{color:var(--mut);margin:0 0 12px}
+h2{font-size:1.1rem;margin:0 0 4px}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin:14px 0}
+.inst{color:var(--mut);margin:0 0 10px;font-size:.93rem}
+.pts{float:right;font-weight:700;color:var(--acc)}
+.who{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}.who input{flex:1;min-width:150px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit}
+.bank,.zone{min-height:44px;border-radius:10px;padding:6px;display:flex;flex-wrap:wrap;gap:6px;align-items:flex-start}
+.bank{background:var(--bg);border:1px dashed var(--line);margin-bottom:10px}
+.zone{border:2px dashed var(--line);background:var(--bg)}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.cats h3{font-size:.85rem;margin:0 0 4px}
+.slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.chip{display:inline-block;padding:5px 11px;border-radius:999px;background:var(--acc);color:#fff;cursor:grab;user-select:none;font-size:.93rem;border:2px solid transparent}
+:root[data-theme="dark"] .chip{color:#10151f}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip{color:#10151f}}
+.chip.sel{outline:3px solid var(--fg)}
+.chip.ok{background:var(--ok)!important}.chip.bad{background:var(--bad)!important}
+.gap{display:inline-flex;min-width:120px;min-height:30px;padding:2px 4px;vertical-align:middle;border:2px dashed var(--line);border-radius:8px;background:var(--bg);align-items:center}
+.gap::before{content:attr(data-n);color:var(--mut);font-size:.75rem;margin-right:4px}
+.story p,.mc p{margin:.5em 0}
+.q{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:6px 0}
+.opt{padding:5px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg);font:inherit;cursor:pointer}
+.opt.sel{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc)}.opt.ok{background:var(--okbg);border-color:var(--ok)}.opt.bad{background:var(--badbg);border-color:var(--bad)}
+.item{margin:10px 0}.line{min-height:46px}.line.ok{border-color:var(--ok);background:var(--okbg)}.line.bad{border-color:var(--bad);background:var(--badbg)}
+.fix{font-size:.88rem;color:var(--ok);margin-top:3px}
+button.main{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:11px 20px;font:inherit;font-weight:700;cursor:pointer;margin-right:8px}
+:root[data-theme="dark"] button.main{color:#10151f}@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) button.main{color:#10151f}}
+button.main:disabled{opacity:.5}
+#res{display:none}#res table{width:100%;border-collapse:collapse}#res td{padding:5px;border-bottom:1px solid var(--line)}#res td:last-child{text-align:right}
+.tot{font-size:1.3rem;font-weight:800}
+#sst{margin:10px 0 0;font-weight:700}.sok{color:var(--ok)}.sbad{color:var(--bad)}</style></head><body><main>
+<h1>See the World (Побачити світ)</h1>
+<p class="sub">Module 7 Check Out Test · 11 points</p>
+<div class="who"><input id="nm" placeholder="Name"><input id="gr" placeholder="Group №"></div>
+<p class="inst">Name and group are not graded. Drag the items (or tap an item, then tap the place where it goes). On a computer you can drag; on a phone, tap.</p>
+
+
+
+<section><h2>Task 1. Choose 5 words that name places to stay during a trip. <span class="pts" id="p2"></span></h2><p class="inst">1 point (0.2 per correct word). Some words do not fit.</p><div class="bank" data-t="2" id="b2"></div><div class="slots" id="z2"></div></section>
+
+<section><h2>Task 2. Complete the story using the given words and phrases. <span class="pts" id="p3"></span></h2><p class="inst">2 points (0.2 per gap).</p><div class="bank" data-t="3" id="b3"></div><div class="story" id="s3"></div></section>
+
+<section><h2>Task 3. Put the words in order to form sentences in the Passive Voice. <span class="pts" id="p5"></span></h2><p class="inst">3 points (0.75 per sentence). Tap a word to add it to the sentence; tap it again to remove it. Capital letters and full stops are not needed.</p><div id="s5"></div></section>
+
+<section><h2>Task 4. Read the text and choose the correct answer for each gap. <span class="pts" id="p4"></span></h2><p class="inst">2 points (about 0.33 per gap).</p><div class="mc" id="s4"></div></section>
+
+<section><h2>Task 5. Transform into the Passive Voice. Keep the tense. <span class="pts" id="p6"></span></h2><p class="inst">3 points (1 per sentence). Build the passive sentence from the words (some words are extra).</p><div id="s6"></div></section>
+
+<section><button class="main" id="ck">Check answers</button><button class="main" id="rs">Try again</button>
+<div id="res"><h2>Results</h2><table id="rt"></table><p id="sst" role="status"></p></div></section>
+
+<script>
+/* ===================== CONFIGURATION =====================
+   Paste your Google Apps Script Web App URL between the quotes below.
+   It must look like: https://script.google.com/macros/s/XXXX/exec
+   ========================================================= */
+var SHEETS_WEB_APP_URL="https://script.google.com/macros/s/AKfycbyWwniqqiHkecyJCBgCop9pyQVoTCvNtJ7d4a8MaVsAwXlBfacYlFLdjbfABZb9qYH3WA/exec";
+var TEST_NAME="See the World (Побачити світ)";
+/* ========================================================= */
+var $=function(s){return document.querySelector(s)},mk=function(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e};
+var sh=function(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.random()*(i+1)|0;var t=a[i];a[i]=a[j];a[j]=t}return a};
+var sel=null,uid=0,done=false;
+function unsel(){if(sel)sel.classList.remove('sel');sel=null}
+function zone(el,t,cap){el.classList.add('zone');el.dataset.t=t;el.cap=cap;
+ el.ondragover=function(e){e.preventDefault()};
+ el.ondrop=function(e){e.preventDefault();var c=document.getElementById(e.dataTransfer.getData('text/plain'));if(c)place(c,el)};
+ el.onclick=function(){if(sel)place(sel,el)}}
+function place(c,z){if(done||c.dataset.t!==z.dataset.t)return;
+ if(z.cap===1){var o=z.querySelector('.chip');if(o&&o!==c)o.home.appendChild(o)}
+ z.appendChild(c);unsel()}
+function chip(text,t,bank,a){var c=mk('span','chip',text);c.draggable=true;c.dataset.t=t;if(a!=null)c.dataset.a=a;c.id='c'+(uid++);c.home=bank;
+ c.ondragstart=function(e){e.dataTransfer.setData('text/plain',c.id);unsel()};
+ c.onclick=function(e){e.stopPropagation();if(done)return;var z=c.parentElement;
+  if(z.dataset.build){place(c,z===c.home?z.line:c.home);return}
+  if(sel===c){unsel();return}unsel();sel=c;c.classList.add('sel')};
+ bank.appendChild(c);return c}
+
+/* Task 1 */
+var cats=['Transport & Navigation','Culture','Verbs, Activities, Gear','Places','People'];
+var w1=[['ferry',0],['GPS',0],['navigator',0],['cable car',0],['diversity',1],['ritual',1],['heritage',1],['cross-cultural',1],['canoeing',2],['zip-lining',2],['helmet',2],['rope',2],['lake',3],['airport',3],['valley',3],['embassy',3],['officer',4],['guide',4],['concierge',4],['interpreter',4]];
+function build1(){var b=$('#b1');zone(b,1,Infinity);sh(w1).forEach(function(w){chip(w[0],1,b,w[1])});
+ cats.forEach(function(n,i){var d=mk('div');d.appendChild(mk('h3','',n));var z=mk('div','cat');z.dataset.i=i;zone(z,1,Infinity);d.appendChild(z);$('#z1').appendChild(d)})}
+
+/* Task 2 */
+var ok2=['hotel','hostel','B&B','campsite','resort','apartment'],bad2=['ferry','helmet','embassy','lake'];
+function build2(){var b=$('#b2');zone(b,2,Infinity);sh(ok2.concat(bad2)).forEach(function(w){chip(w,2,b,ok2.indexOf(w)>-1?1:0)});
+ for(var i=1;i<=5;i++){var z=mk('div','slot');zone(z,2,1);$('#z2').appendChild(z)}}
+
+/* Task 3 */
+var story=['Jake and his friends wanted a unique travel experience, so they decided to go [[camping]] in a remote village known for its rich [[cultural heritage]] and stunning landscapes. As passionate supporters of [[eco-tourism]], they planned to explore the area [[on foot]], avoiding cars to minimize their carbon footprint.','To [[cut costs]], they skipped hotels and instead brought their own tents and [[sleeping bags]]. They also carried [[trekking poles]] to help with the steep trails. After a long day of hiking through lush forests and breathtaking mountain views, they set up camp near a small river.','The next morning, they visited the local market, where vendors only accepted [[cash]]. Luckily, they had brought enough money for fresh goods and handmade souvenirs. While exploring the village, they met a police officer who told them fascinating stories about the area’s [[traditions]] and history.','By the end of their trip, they felt more connected to nature and culture than ever before. It was an unforgettable [[journey]] — one that proved adventure didn’t have to come with a high price tag.'];
+function build3(){var b=$('#b3'),n=0,ans=[];zone(b,3,Infinity);var box=$('#s3');
+ story.forEach(function(p){var el=mk('p');p.split(/\[\[(.+?)\]\]/).forEach(function(s,i){if(i%2===0){el.appendChild(document.createTextNode(s))}else{n++;var g=mk('span','gap');g.dataset.n=n;g.dataset.a=s;zone(g,3,1);ans.push(s);el.appendChild(g)}});box.appendChild(el)});
+ sh(ans).forEach(function(a){chip(a,3,b)})}
+
+/* Task 4 */
+var t4=['Last weekend, my friends and I stayed at a charming B&B by the seaside. When we arrived, we were happy to find that our rooms (1) ____ and decorated with fresh flowers.','Breakfast (2) ____ every morning in a cozy dining room with a sea view. The owners were very welcoming, and I wanted to ask them something. I wasn’t sure (3) ____ they had owned the B&B for a long time, so I asked politely.','Each morning, the hosts (4) ____ a variety of homemade dishes, including fresh pastries and fruit. One day, I wanted to help, so I asked if I could (5) ____ the dishes after breakfast. They happily agreed.','Before leaving, I needed directions to the train station. I didn’t know (6) ____ a taxi for me, so I asked the receptionist. She smiled and arranged it right away.'];
+var q4=[['was cleaned','had been cleaned','has been cleaned',1],['is served','serves','is serving',0],['if','that','when',0],['did','made','do',1],['do','make','wash',2],['whether they had booked','if had they booked','that they had booked',0]];
+function build4(){var box=$('#s4');t4.forEach(function(p){box.appendChild(mk('p','',p))});
+ q4.forEach(function(q,i){var r=mk('div','q');r.appendChild(mk('b','',(i+1)+')'));
+  q.slice(0,3).forEach(function(o,k){var bt=mk('button','opt','ABC'[k]+') '+o);bt.dataset.k=k;bt.onclick=function(){if(done)return;r.querySelectorAll('.opt').forEach(function(x){x.classList.remove('sel')});bt.classList.add('sel')};r.appendChild(bt)});
+  r.dataset.a=q[3];box.appendChild(r)})}
+
+/* Tasks 5 & 6 */
+var t5=[['food is always served on the plane by the flight attendants',[]],['the flight was delayed by bad weather',[]],['travel advice can be given by the embassy',[]],['the boarding pass must be presented at check-in',[]]];
+var t6=[['has transportation to the airport been arranged',['have','being']],['we hadn’t been informed about the free breakfast by the hotel manager',['wasn’t','has']],['the suitcases are being loaded onto the plane',['is','been']]];
+function buildS(id,t,data){var box=$(id);data.forEach(function(d){var it=mk('div','item'),bank=mk('div','bank'),line=mk('div','line');
+ bank.dataset.t=t;bank.dataset.build=1;line.dataset.t=t;line.dataset.build=1;bank.line=line;line.dataset.a=d[0];zone(bank,t,Infinity);zone(line,t,Infinity);line.classList.add('line');
+ sh(d[0].split(' ').concat(d[1])).forEach(function(w){chip(w,t,bank)});it.appendChild(bank);it.appendChild(line);box.appendChild(it)})}
+
+/* Check */
+function norm(s){return s.toLowerCase().replace(/[?.]/g,'').trim()}
+function round(x){return Number(x.toFixed(2))}
+function check(){if(done)return;done=true;unsel();var r=[0,0,0,0,0,0],cc=0;
+ 
+ var seen={};document.querySelectorAll('.slot .chip').forEach(function(c){var ok=c.dataset.a==='1'&&!seen[c.textContent];c.classList.add(ok?'ok':'bad');if(ok){seen[c.textContent]=1;r[1]+=.2;cc++}});
+ document.querySelectorAll('.gap').forEach(function(g){var c=g.querySelector('.chip');if(!c)return;var ok=c.textContent===g.dataset.a;c.classList.add(ok?'ok':'bad');if(ok){r[2]+=.2;cc++}});
+ document.querySelectorAll('.q').forEach(function(q){var s=q.querySelector('.opt.sel'),a=q.dataset.a;q.querySelectorAll('.opt')[a].classList.add('ok');if(s&&s.dataset.k===a){r[3]+=2/6;cc++}else if(s)s.classList.add('bad')});
+ [[5,.75],[6,1]].forEach(function(p){document.querySelectorAll('#s'+p[0]+' .line').forEach(function(l){var got=Array.prototype.map.call(l.querySelectorAll('.chip'),function(c){return c.textContent}).join(' ');
+  if(norm(got)===norm(l.dataset.a)){l.classList.add('ok');r[p[0]-1]+=p[1];cc++}else{l.classList.add('bad');l.parentElement.appendChild(mk('div','fix','Correct: '+l.dataset.a))}})});
+ var mx=[0,1,2,2,3,3],tot=0,tb=$('#rt');tb.innerHTML='';
+ [1,2,4,3,5].forEach(function(i,n){var v=round(r[i]);tot+=v;$('#p'+(i+1)).textContent=v+' / '+mx[i];var tr=mk('tr');tr.appendChild(mk('td','','Task '+(n+1)));tr.appendChild(mk('td','',v+' / '+mx[i]));tb.appendChild(tr)});
+ var tr=mk('tr','tot');tr.appendChild(mk('td','tot','Total'));tr.appendChild(mk('td','tot',round(tot)+' / 11'));tb.appendChild(tr);
+ $('#res').style.display='block';$('#ck').disabled=true;$('#res').scrollIntoView({behavior:'smooth'});
+ try{var sc=[1,2,4,3,5].map(function(i){return round(r[i])}),T=round(tot);
+ submitResults({id:(window.crypto&&crypto.randomUUID)?crypto.randomUUID():String(Date.now())+Math.random().toString(36).slice(2),
+  submittedAt:new Date().toISOString(),localTime:new Date().toLocaleString(),name:$('#nm').value.trim(),group:$('#gr').value.trim(),
+  task1:sc[0],task2:sc[1],task3:sc[2],task4:sc[3],task5:sc[4],total:T,maxTotal:11,percentage:round(T/11*100),correct:cc,totalItems:28,testName:TEST_NAME})}
+ catch(e){setSt('We could not confirm that your results were delivered to your teacher. Please contact your teacher and show them your result on this page.','sbad')}}
+var sent=false;
+function setSt(t,c){var e=$('#sst');e.textContent=t;e.className=c||''}
+function submitResults(d){
+ if(sent)return;sent=true;
+ var u=SHEETS_WEB_APP_URL;
+ if(!/^https:\/\/script\.google\.com\/(a\/macros\/[^\/\s]+\/|macros\/)s\/[^\s\/]+\/exec$/.test(u)){setSt('Your results could not be sent automatically. Please contact your teacher and show them your result on this page.','sbad');return}
+ setSt('Sending your results…','');
+ var ctl=window.AbortController?new AbortController():null,tm=setTimeout(function(){if(ctl)ctl.abort()},20000);
+ var o={method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d),redirect:'follow'};if(ctl)o.signal=ctl.signal;
+ fetch(u,o).then(function(r){if(!r.ok)throw new Error('http');return r.json()}).then(function(j){clearTimeout(tm);if(j&&j.ok===true)setSt('Your results have been submitted successfully!','sok');else throw new Error('bad')})
+ .catch(function(){clearTimeout(tm);setSt('We could not confirm that your results were delivered to your teacher. Please contact your teacher and show them your result on this page.','sbad')})}
+build2();build3();build4();buildS('#s5',5,t5);buildS('#s6',6,t6);
+$('#ck').onclick=check;$('#rs').onclick=function(){location.reload()};
+document.body.onclick=function(e){if(!e.target.closest('.chip,.zone'))unsel()};
+</script></main></body></html>
